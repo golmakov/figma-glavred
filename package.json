@@ -1,6 +1,6 @@
 {
   "name": "figma-glavred",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Figma plugin for proofreading Russian texts using Glvrd API",
   "main": "./src/code.js",
   "scripts": {
@@ -20,6 +20,5 @@
     "webpack-cli": "^3.3.7",
     "zip-webpack-plugin": "^3.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
