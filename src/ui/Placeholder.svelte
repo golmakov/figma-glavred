@@ -15,7 +15,7 @@
         width: 128px;
         height: 64px;
 
-        margin-bottom: 22px;
+        margin-bottom: 16px;
 
         background-repeat: no-repeat;
         background-image: url('../../assets/img-nothing-selected.png');
@@ -34,5 +34,5 @@
 
 <div class="placeholder">
     <div class="select-txt-img"></div>
-    <div class="description">Выберите слой с текстом и нажмите кнопку «Проверить текст» в окне плагина</div>
+    <div class="description">Выберите слой с текстом</div>
 </div>

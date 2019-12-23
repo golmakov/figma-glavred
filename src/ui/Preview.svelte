@@ -1,17 +1,26 @@
 <script>
+    export let text;
+    let formated;
 
+    function formatTxt(txt) {
+        return '<p>' + txt.replace(/(?:\r\n|\r|\n)/g, '<p/><p>') + '</p>';
+    }
+    $: formated = formatTxt(text);
 </script>
 
 <style>
     .preview {
-        display: flex;
         flex-grow: 1;
         overflow-y: scroll;
+
+        padding: 16px;
+
+        font-size: 14px;
+        line-height: 24px;
+        font-family: Inter;
     }
 </style>
 
 <div class="preview">
-    <slot>
-        <h1>Hello world!</h1>
-    </slot>
+    {@html formated}
 </div>
