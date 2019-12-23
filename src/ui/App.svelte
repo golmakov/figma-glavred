@@ -8,7 +8,7 @@
     onmessage = (event) => {
 		let message = event.data.pluginMessage;
 		if (message.action === 'showTxt') {
-			text = message.text;
+            text = message.text;
         }
     }
 </script>
@@ -19,12 +19,14 @@
 		flex-direction: row;
 		height: 100%;
 		width: 100%;
+
+        margin: 0;
 	}
 </style>
 
 <div class="ui">
     {#if text}
-        <Preview>{text}</Preview>
+        <Preview {text}/>
     {:else}
         <Placeholder/>
     {/if}
