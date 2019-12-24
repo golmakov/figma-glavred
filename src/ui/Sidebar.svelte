@@ -1,5 +1,6 @@
 <script>
     import Score from './components/Score.svelte';
+    import Rules from './components/Rules.svelte';
 
     export let state = 'welcome';
     export let score;
@@ -34,5 +35,6 @@
         <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
     {:else}
         <Score score={score}/>
+        <Rules title="Газетный штамп" description="Читателю трудно прорываться сквозь статью, в которой много подобных фраз" />
     {/if}
 </div>
