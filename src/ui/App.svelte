@@ -4,11 +4,13 @@
     import Placeholder from './Placeholder.svelte';
 
     export let text;
+    let score;
 
     onmessage = (event) => {
 		let message = event.data.pluginMessage;
 		if (message.action === 'showTxt') {
             text = message.text;
+            score = (Math.random() * 10 + 1).toFixed(1);
         }
     }
 </script>
@@ -32,5 +34,5 @@
     {:else}
         <Placeholder/>
     {/if}
-    <Sidebar/>
+    <Sidebar score={score}/>
 </div>

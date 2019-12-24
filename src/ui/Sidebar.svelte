@@ -1,5 +1,10 @@
 <script>
+    import Score from './components/Score.svelte';
 
+    export let state = 'welcome';
+    export let score;
+
+    $: state = score ? 'score' : 'welcome';
 </script>
 
 <style>
@@ -24,6 +29,10 @@
 </style>
 
 <div class="sidebar">
-    <h2>Главред</h2>
-    <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
+    {#if state == 'welcome'}
+        <h2>Главред</h2>
+        <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
+    {:else}
+        <Score score={score}/>
+    {/if}
 </div>
