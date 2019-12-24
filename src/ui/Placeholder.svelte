@@ -18,7 +18,7 @@
         margin-bottom: 16px;
 
         background-repeat: no-repeat;
-        background-image: url('../../assets/img-nothing-selected.png');
+        background-image: url('../../assets/img/img-nothing-selected.png');
         background-size: 128px 64px;
     }
     .description {
