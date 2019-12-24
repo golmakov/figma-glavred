@@ -31,6 +31,8 @@ npm install
 npm run dev
 ```
 
+Откройте десктопное приложение Фигмы, перейдите в раздел `Plugins` нажмите `Create your own plugin` -> `Click to choose a manifest.json file` и выберите файл `manifest.json` в папке `Dist` плагина.
+
 ## Авторы
 
 - Написал плагин — [Саша Гольмаков](https://twitter.com/golmakov) ([golmakov@gmail.com](mailto:golmakov@gmail.com))
