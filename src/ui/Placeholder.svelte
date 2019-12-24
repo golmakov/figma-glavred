@@ -25,7 +25,6 @@
         max-width: 300px;
 
         text-align: center;
-        font-family: Inter;
         font-size: 16px;
         line-height: 24px;
         color: rgba(0, 0, 0, 0.4);

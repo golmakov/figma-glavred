@@ -13,11 +13,10 @@
         flex-grow: 1;
         overflow-y: scroll;
 
-        padding: 16px;
+        padding: 0 16px 16px 16px;
 
         font-size: 14px;
         line-height: 24px;
-        font-family: Inter;
     }
 </style>
 
