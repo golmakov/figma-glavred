@@ -7,8 +7,8 @@
     let score;
 
     onmessage = (event) => {
-		let message = event.data.pluginMessage;
-		if (message.action === 'showTxt') {
+        let message = event.data.pluginMessage;
+        if (message.action === 'showTxt') {
             text = message.text;
             score = (Math.random() * 10 + 1).toFixed(1);
         }
@@ -17,15 +17,15 @@
 
 <style>
     .ui {
-		display: flex;
-		flex-direction: row;
-		height: 100%;
-		width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
 
         margin: 0;
 
         font-family: Inter;
-	}
+    }
 </style>
 
 <div class="ui">
