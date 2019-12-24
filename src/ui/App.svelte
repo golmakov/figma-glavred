@@ -7,16 +7,32 @@
     let glvrd = new Glavred("Figma plugin");
 
     export let text;
-    let score;
+    let score, fragments, hints;
+
+    function listHints(fragmentsList) {
+        return fragmentsList.reduce(function (rv, cv) {
+            let name = cv['hint']['name'];
+            if (Object.keys(rv).includes(name)) {
+                rv[name]['hints'].push(cv['hint_id']);
+            } else {
+                rv[name] = {
+                    'description': cv['hint']['description'],
+                    'hints': [cv['hint_id']]
+                }
+            }            
+            return rv;
+        }, {});
+    }
 
     onmessage = (event) => {
         let message = event.data.pluginMessage;
         if (message.action === 'showTxt') {
             text = message.text;
-            glvrd.proofread(text).then(function(results){
-                console.log(results);
+            glvrd.proofread(text).then(function(results) {
                 if (results['status'] === 'ok') {
                     score = results['score'];
+                    fragments = results['fragments'];
+                    hints = listHints(fragments);
                 } else {
                     console.log(results);
                     parent.postMessage({
@@ -43,9 +59,9 @@
 
 <div class="ui">
     {#if text}
-        <Preview {text}/>
+        <Preview {text} {fragments}/>
     {:else}
         <Placeholder/>
     {/if}
-    <Sidebar {score}/>
+    <Sidebar {score} {hints}/>
 </div>

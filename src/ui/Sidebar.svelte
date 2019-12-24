@@ -4,6 +4,7 @@
 
     export let state = 'welcome';
     export let score;
+    export let hints;
 
     $: state = score ? 'score' : 'welcome';
 </script>
