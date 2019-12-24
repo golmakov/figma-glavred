@@ -12,3 +12,11 @@ figma.on("selectionchange", () => {
 })
 
 getSelectedText();
+
+figma.ui.onmessage = (message) => {
+    switch (message.action) {
+        case 'serverError':
+            figma.notify("Сервер главреда не отвечает 😨");
+            break;
+    }
+}

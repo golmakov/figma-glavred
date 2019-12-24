@@ -3,6 +3,9 @@
     import Preview from './Preview.svelte';
     import Placeholder from './Placeholder.svelte';
 
+    const Glavred = require('glvrd-http-api');
+    let glvrd = new Glavred("Figma plugin");
+
     export let text;
     let score;
 
@@ -10,7 +13,17 @@
         let message = event.data.pluginMessage;
         if (message.action === 'showTxt') {
             text = message.text;
-            score = (Math.random() * 10 + 1).toFixed(1);
+            glvrd.proofread(text).then(function(results){
+                console.log(results);
+                if (results['status'] === 'ok') {
+                    score = results['score'];
+                } else {
+                    console.log(results);
+                    parent.postMessage({
+                        pluginMessage: {action: 'serverError'}
+                    }, '*');
+                }                
+            });
         }
     }
 </script>
@@ -34,5 +47,5 @@
     {:else}
         <Placeholder/>
     {/if}
-    <Sidebar score={score}/>
+    <Sidebar {score}/>
 </div>
