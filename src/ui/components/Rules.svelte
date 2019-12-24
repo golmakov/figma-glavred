@@ -19,7 +19,7 @@
     }
     .description {
         font-weight: normal;
-        font-size: 11px;
+        font-size: 12px;
         line-height: 16px;
     }
 </style>

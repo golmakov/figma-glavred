@@ -5,8 +5,10 @@
     export let state = 'welcome';
     export let score;
     export let hints;
+    export let current;
 
     $: state = score ? 'score' : 'welcome';
+    $: current = hints ? hints[Object.keys(hints)[0]] : current;
 </script>
 
 <style>
@@ -36,6 +38,8 @@
         <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
     {:else}
         <Score score={score}/>
-        <Rules title="Газетный штамп" description="Читателю трудно прорываться сквозь статью, в которой много подобных фраз" />
+        {#if current}
+            <Rules title={current['name']} description={current['description']} />
+        {/if}
     {/if}
 </div>

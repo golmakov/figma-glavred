@@ -10,18 +10,20 @@
     let score, fragments, hints;
 
     function listHints(fragmentsList) {
-        return fragmentsList.reduce(function (rv, cv) {
+        let result = fragmentsList.reduce(function (rv, cv) {
             let name = cv['hint']['name'];
             if (Object.keys(rv).includes(name)) {
                 rv[name]['hints'].push(cv['hint_id']);
             } else {
                 rv[name] = {
+                    'name': name,
                     'description': cv['hint']['description'],
                     'hints': [cv['hint_id']]
                 }
             }            
             return rv;
         }, {});
+        return result;
     }
 
     onmessage = (event) => {
@@ -33,6 +35,7 @@
                     score = results['score'];
                     fragments = results['fragments'];
                     hints = listHints(fragments);
+                    console.log(hints)
                 } else {
                     console.log(results);
                     parent.postMessage({
