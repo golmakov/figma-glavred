@@ -1,6 +1,7 @@
 <script>
     import Score from './components/Score.svelte';
-    import Rules from './components/Rules.svelte';
+    import RuleDescription from './components/RuleDescription.svelte';
+    import ProblemsList from './components/ProblemsList.svelte';
 
     export let state = 'welcome';
     export let score;
@@ -8,7 +9,6 @@
     export let current;
 
     $: state = score ? 'score' : 'welcome';
-    $: current = hints ? hints[Object.keys(hints)[0]] : current;
 </script>
 
 <style>
@@ -38,8 +38,9 @@
         <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
     {:else}
         <Score score={score}/>
+        <ProblemsList {hints} {current}/>
         {#if current}
-            <Rules title={current['name']} description={current['description']} />
+            <RuleDescription title={current['name']} description={current['description']} />
         {/if}
     {/if}
 </div>

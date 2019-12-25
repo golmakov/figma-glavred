@@ -9,7 +9,7 @@
     .stats {
         display: flex;
         flex-direction: column;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
     }
     .counter {
         margin-bottom: 8px;
