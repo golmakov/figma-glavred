@@ -25,6 +25,8 @@
 
         color: #DA570F;
         border-bottom: 1px dotted #fdc;
+
+        white-space: nowrap;
     }
 </style>
 
