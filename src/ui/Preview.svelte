@@ -1,21 +1,8 @@
 <script>
+    import Highlight from './components/Highlight.svelte';
+
     export let text;
     export let fragments;
-
-    function showProofread(list, txt) {
-        let result = "";
-        let position = 0;
-        
-        for (let i = 0; i < list.length; i++) {
-            let item = list[i];
-            result = result + txt.slice(position, item['start']);
-            result = result + '<span class="proof--underline">' + txt.slice(item['start'], item['end']) + '</span>';
-            position =  item['end'];
-        }
-        result = result + txt.slice(position, txt.length);
-        return result;
-    }
-    $: text = fragments ? showProofread(fragments, text) : text;
 
     function formatTxt(txt) {
         return '<p>' + txt.replace(/(?:\r\n|\r|\n)/g, '<p/><p>') + '</p>';
@@ -33,26 +20,16 @@
         font-size: 14px;
         line-height: 24px;
     }
-    :global(.proof--highlighted) {
-        color: #da570f;
-        background: #fdc;
-        border-radius: .2em;
-    }
-    :global(.proof--underline) {
-        color: #dA570f;
-        background: url(../../assets/img/underline.svg) 0 100% repeat-x;
-
-        border-radius: .2em;
-        padding: 3px 2px;
-        margin: 0 -2px;
-    }
-    :global(.proof--active) {
-        -webkit-transition: background-color 0s, color 0s;
-        color: #fff;
-        background: #DA570F;
-    }
 </style>
 
 <div class="preview">
-    {@html formated}
+{#if fragments}
+    {#each fragments as item, index}
+        {index === 0 ? text.slice(0,item['start']) : text.slice(fragments[index-1]['end'],item['start']) }
+        <Highlight>{text.slice(item['start'], item['end'])}</Highlight>
+        {index === fragments.length - 1 ? text.slice(item['end'], text.length) : ""}
+    {:else}
+        {text}
+    {/each}
+{/if}
 </div>
