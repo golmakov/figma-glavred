@@ -7,7 +7,7 @@
     let glvrd = new Glavred("Figma plugin");
 
     export let text;
-    let score, fragments, hints;
+    let score, fragments, hints, showLoader;
 
     function listHints(fragmentsList) {
         let result = fragmentsList.reduce(function (rv, cv) {
@@ -30,14 +30,18 @@
         let message = event.data.pluginMessage;
         if (message.action === 'showTxt') {
             text = message.text;
+            fragments = undefined;
+            showLoader = true;
             glvrd.proofread(text).then(function(results) {
                 if (results['status'] === 'ok') {
                     score = results['score'];
                     fragments = results['fragments'];
                     hints = listHints(fragments);
+                    showLoader = false;
                     console.log(hints)
                 } else {
                     console.log(results);
+                    showLoader = false;
                     parent.postMessage({
                         pluginMessage: {action: 'serverError'}
                     }, '*');
@@ -66,5 +70,5 @@
     {:else}
         <Placeholder/>
     {/if}
-    <Sidebar {score} {hints}/>
+    <Sidebar {score} {hints} {showLoader}/>
 </div>

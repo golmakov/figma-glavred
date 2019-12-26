@@ -2,8 +2,10 @@
     import Score from './components/Score.svelte';
     import RuleDescription from './components/RuleDescription.svelte';
     import ProblemsList from './components/ProblemsList.svelte';
+    import Loader from './components/Loader.svelte';
 
     export let state = 'welcome';
+    export let showLoader = false;
     export let score;
     export let hints;
     export let current;
@@ -16,6 +18,7 @@
         display: flex;
         flex-direction: column;
         flex: none;
+        position: relative;
         width: 240px;
         padding: 16px;
 
@@ -45,6 +48,9 @@
 </style>
 
 <div class="sidebar">
+    {#if showLoader}
+        <Loader/>
+    {/if}
     {#if state == 'welcome'}
         <h2>Главред</h2>
         <div class="about">Помогает очистить текст от словесного мусора и проверяет на соответствие информационному стилю</div>
