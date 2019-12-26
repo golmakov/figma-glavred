@@ -20,6 +20,7 @@
         color: rgba(0, 0, 0, 0.3);
     }
     .rule {
+        display: inline-flex;
         margin-right: 10px;
         line-height: 16px;
 
