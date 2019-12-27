@@ -2,6 +2,11 @@
     export let score;
     let color = 'default';
 
+    // Отсюда — https://gist.github.com/realmyst/1262561
+    function declOfNum(n, titles) {
+        return titles[(n^0) != n ? 1 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2];
+    }
+
     $: color = parseFloat(score) < 7 ? 'bad' : 'default';
 </script>
 
@@ -32,5 +37,5 @@
 
 <div class="stats">
     <div class="counter {color}">{score}</div>
-    <div class="total">балла из 10 по шкале Главреда</div>
+    <div class="total">{declOfNum(score,["балл","балла","баллов"])} из 10 по шкале Главреда</div>
 </div>
