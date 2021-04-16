@@ -1,4 +1,4 @@
-figma.showUI(__html__, {width: 740, height: 680});
+figma.showUI(__html__, {width: 660, height: 600});
 
 function getSelectedText() {
     let selection = figma.currentPage.selection;

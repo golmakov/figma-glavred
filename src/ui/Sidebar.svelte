@@ -19,7 +19,7 @@
         flex-direction: column;
         flex: none;
         position: relative;
-        width: 240px;
+        width: 210px;
         padding: 16px;
 
         border-left: 1px solid #E5E5E5;
